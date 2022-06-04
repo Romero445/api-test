@@ -31,6 +31,7 @@ public class ReqresApiTest {
                 .post("https://reqres.in/api/users")
                 .then()
                 .statusCode(201)
+                .log().all()
                 .body("name", is("Neo"))
                 .body("job", is("Messiah"));
     }
@@ -61,6 +62,7 @@ public class ReqresApiTest {
                 .get("https://reqres.in/api/users?page=2")
                 .then()
                 .statusCode(200)
+                .log().all()
                 .body("data.findAll {it.id<10}.first_name", hasItems("Michael", "Tobias"));
     }
 
